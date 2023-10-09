@@ -1,33 +1,22 @@
 import css from './contactList.module.css';
 import ContactItem from 'components/ContactItem/ContactItem';
-import PropTypes from 'prop-types';
-export const ContactList = ({ onClick, contacts }) => {
-  const deleteContact = data => {
-    onClick(data);
-  };
+import { useSelector } from 'react-redux';
+
+export const ContactList = () => {
+  const { contacts, filter } = useSelector(state => state);
+
+  const normalizedFilter = filter.toLowerCase();
+  const visibleContacts = contacts.filter(({ name }) =>
+    name.toLowerCase().includes(normalizedFilter)
+  );
 
   return (
     <>
       <ul className={css.list}>
-        {contacts.map(contact => (
-          <ContactItem
-            contact={contact}
-            key={contact.id}
-            onClick={deleteContact}
-          />
+        {visibleContacts.map(contact => (
+          <ContactItem contact={contact} key={contact.id} />
         ))}
       </ul>
     </>
   );
-};
-
-ContactList.propTypes = {
-  onClick: PropTypes.func,
-  contacts: PropTypes.arrayOf(
-    PropTypes.shape({
-      name: PropTypes.string,
-      number: PropTypes.string,
-      id: PropTypes.string,
-    })
-  ),
 };

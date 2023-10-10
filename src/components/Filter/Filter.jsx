@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import css from './filter.module.css';
+import { filterContacts } from 'redux/actions';
 
 const Filter = () => {
   const dispatch = useDispatch();
@@ -7,7 +8,7 @@ const Filter = () => {
 
   const changeFilter = e => {
     const data = e.currentTarget.value;
-    dispatch({ type: 'filterP', payload: data });
+    dispatch(filterContacts(data));
   };
 
   return (

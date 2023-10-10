@@ -1,13 +1,13 @@
 import { useDispatch } from 'react-redux';
 import css from './contactItem.module.css';
-
+import { deleteContact } from 'redux/actions';
 const ContactItem = ({ contact }) => {
   const dispatch = useDispatch();
 
   const deleteBtnHandler = e => {
     const contactToDelete =
       e.currentTarget.previousElementSibling.firstChild.data;
-    dispatch({ type: 'deleteContact', payload: contactToDelete });
+    dispatch(deleteContact(contactToDelete));
   };
 
   return (

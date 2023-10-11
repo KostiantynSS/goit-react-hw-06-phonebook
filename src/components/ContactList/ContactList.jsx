@@ -3,8 +3,9 @@ import ContactItem from 'components/ContactItem/ContactItem';
 import { useSelector } from 'react-redux';
 
 export const ContactList = () => {
-  const { contacts, filter } = useSelector(state => state);
-
+  const { contacts } = useSelector(state => state.contacts);
+  const { filter } = useSelector(state => state.filter);
+  console.log(contacts);
   const normalizedFilter = filter.toLowerCase();
   const visibleContacts = contacts.filter(({ name }) =>
     name.toLowerCase().includes(normalizedFilter)

@@ -5,9 +5,6 @@ const reserveContacts = [
   { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
 ];
 
-const localContacts = JSON.parse(localStorage.getItem('contact'));
+export const contactsInitialState = reserveContacts;
 
-export const initialState = {
-  contacts: localContacts.length > 0 ? localContacts : reserveContacts,
-  filter: '',
-};
+export const filterInitialState = { filter: '' };

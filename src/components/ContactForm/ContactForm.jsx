@@ -3,7 +3,7 @@ import css from './contactForm.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 
 const ContactForm = () => {
-  const { contacts } = useSelector(state => state.contacts);
+  const contacts = useSelector(state => state.contacts);
   const dispatch = useDispatch();
 
   const handleSubmit = e => {
@@ -14,6 +14,7 @@ const ContactForm = () => {
       name: name.value,
       number: number.value,
     };
+
     const isExist = contacts.find(
       ({ name }) => data.name.toLowerCase() === name.toLowerCase()
     );

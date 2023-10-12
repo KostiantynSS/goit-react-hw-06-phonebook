@@ -22,7 +22,7 @@ const rootReducer = combineReducers({
 const persistConfig = {
   key: 'root',
   storage,
-  whiteList: ['contacts'],
+  whitelist: ['contacts'],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
@@ -38,3 +38,6 @@ export const store = configureStore({
 });
 
 export const persistor = persistStore(store);
+
+// Without localstorage&persist
+// export const store = configureStore({ reducer: rootReducer });
